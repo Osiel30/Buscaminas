@@ -1,39 +1,44 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscaminas</title>
+    <title>BUSCAMINAS</title>
     <link rel="stylesheet" href="diseño.css">
 </head>
 <body>
-    <h1>Buscaminas</h1>
-    <div class="configuracion">
-        <label for="nivel">Nivel de Dificultad:</label>
-        <select id="nivel">
-            <option value="">Personalizado</option>
-            <option value="Facil">Fácil</option>
-            <option value="Medio">Medio</option>
-            <option value="Dificil">Difícil</option>
-            <option value="MuyDificil">Muy Difícil</option>
-            <option value="Hardcore">Hardcore</option>
-            <option value="Leyenda">Leyenda</option>
-        </select>
+    <div id="container">
+        <h1>BUSCAMINAS</h1>
+        
+        <div id="controls">
+            <label for="nivel">Selecciona el nivel:</label>
+            <select id="nivel" onchange="mostrarCamposPersonalizados()">
+                <option value="Facil">Fácil</option>
+                <option value="Medio">Medio</option>
+                <option value="Dificil">Difícil</option>
+                <option value="MuyDificil">Muy Difícil</option>
+                <option value="Hardcore">Hardcore</option>
+                <option value="Leyenda">Leyenda</option>
+                <option value="Personalizado">Personalizado</option>
+            </select>
+            
+            <div id="personalizado" style="display: none;">
+                <label for="filas">Filas:</label>
+                <input type="number" id="filas" min="1" value="10">
+                
+                <label for="columnas">Columnas:</label>
+                <input type="number" id="columnas" min="1" value="10">
+                
+                <label for="minas">Minas:</label>
+                <input type="number" id="minas" min="1" value="10">
+            </div>
 
-        <div class="personalizado">
-            <label for="filas">Filas:</label>
-            <input type="number" id="filas" min="5" placeholder="5">
-            <label for="columnas">Columnas:</label>
-            <input type="number" id="columnas" min="5" placeholder="5">
-            <label for="minas">Minas:</label>
-            <input type="number" id="minas" min="1" placeholder="1">
+            <button onclick="iniciarJuego()">Iniciar Juego</button>
+            <button id="reiniciarJuego" onclick="reiniciarJuego()" style="display:none;">Reiniciar Juego</button>
         </div>
 
-        <button onclick="iniciarJuego()">Iniciar Juego</button>
-        <button id="reiniciarJuego" onclick="reiniciarJuego()" style="display:none;">Reiniciar Juego</button>
+        <div id="tableroJuego" class="tablero"></div>
     </div>
-    
-    <div id="tableroJuego" class="tablero"></div>
 
     <script src="script.js"></script>
 </body>
